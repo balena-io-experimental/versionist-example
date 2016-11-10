@@ -3,6 +3,12 @@ CHANGELOG
 
 This is my project's CHANGELOG file.
 
+## v5.0.0 - 2016-11-11
+
+### Features
+
+- Hello world
+
 ## v4.0.0 - 2016-11-11
 
 ### Fixes

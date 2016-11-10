@@ -1,7 +1,15 @@
+const childProcess = require('child_process');
+
 module.exports = {
 
   editChangelog: true,
-  editVersion: false,
+  editVersion: true,
+
+  updateVersion: (cwd, version, callback) => {
+    childProcess.execSync(`git commit -a -m "v${version}"`, { cwd });
+    childProcess.execSync(`git tag -a ${version} -m ${version}`, { cwd });
+    return callback();
+  },
 
   addEntryToChangelog: {
     preset: 'prepend',
