@@ -1,3 +1,14 @@
+CHANGELOG
+=========
+
+This is my project's CHANGELOG file.
+
+## v3.0.0 - 2016-11-11
+
+### Features
+
+- Hello world
+
 ## v2.0.0 - 2016-10-02
 
 ### Features

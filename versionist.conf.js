@@ -3,7 +3,10 @@ module.exports = {
   editChangelog: true,
   editVersion: false,
 
-  addEntryToChangelog: 'prepend',
+  addEntryToChangelog: {
+    preset: 'prepend',
+    fromLine: 5
+  },
 
   transformTemplateData: (data) => {
     data.features = data.commits.filter((commit) => {
