@@ -8,17 +8,27 @@ module.exports = {
     fromLine: 5
   },
 
+  getIncrementLevelFromCommit: (commit) => {
+    return commit.footer['Change-Type'];
+  },
+
   transformTemplateData: (data) => {
     data.features = data.commits.filter((commit) => {
       return commit.subject.startsWith('feat:');
     }).map((commit) => {
-      return commit.subject.slice(6);
+      return {
+        message: commit.subject.slice(6),
+        author: commit.footer['Signed-off-by']
+      };
     });
 
     data.fixes = data.commits.filter((commit) => {
       return commit.subject.startsWith('fix:');
     }).map((commit) => {
-      return commit.subject.slice(5);
+      return {
+        message: commit.subject.slice(5),
+        author: commit.footer['Signed-off-by']
+      };
     });
 
     return data;
@@ -31,7 +41,7 @@ module.exports = {
     '### Features',
     '',
     '{{#each features}}',
-    '- {{capitalize this}}',
+    '- {{capitalize this.message}} (by {{this.author}})',
     '{{/each}}',
     '{{/if}}',
     '{{#if fixes.length}}',
@@ -39,7 +49,7 @@ module.exports = {
     '### Fixes',
     '',
     '{{#each fixes}}',
-    '- {{capitalize this}}',
+    '- {{capitalize this.message}} (by {{this.author}})',
     '{{/each}}',
     '{{/if}}'
   ].join('\n')

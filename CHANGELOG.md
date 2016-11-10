@@ -3,6 +3,12 @@ CHANGELOG
 
 This is my project's CHANGELOG file.
 
+## v4.0.0 - 2016-11-11
+
+### Fixes
+
+- Qux
+
 ## v3.0.0 - 2016-11-11
 
 ### Features
